@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include "subject.h"
-
+#include <QListWidgetItem>
+#include <QDebug>
 namespace Ui {
 class MainWindow;
 }
@@ -15,6 +16,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_listWidgetSubjects_itemClicked(QListWidgetItem *item);
+
+    void on_pushButtonAddTime_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -10,10 +10,22 @@ void Subject::setName(const QString &value)
     name = value;
 }
 
-QVector<QDateTime> Subject::getDates() const
+QList<QString> Subject::getStringDates()
 {
-    return dates;
+  dates[0].toString();
+
+  QList<QString> dateList;
+  foreach(QDateTime date, dates){
+      dateList.append(date.toString());
+  }
+
+  return dateList;
 }
+
+//QVector<QDateTime>& Subject::getDates()
+//{
+//    return dates;
+//}
 
 void Subject::appendDate(const QDateTime &date)
 {

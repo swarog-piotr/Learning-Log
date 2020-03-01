@@ -19,7 +19,8 @@ public:
     Subject(QString name);
     QString getName() const;
     void setName(const QString &value);
-    QVector<QDateTime> getDates() const;
+    //QVector<QDateTime>& getDates();
+    QList<QString> getStringDates();
     void appendDate(const QDateTime &date);
 };
 
