@@ -34,6 +34,8 @@ void MainWindow::initSampleSubjects()
 
 void MainWindow::on_listWidgetSubjects_itemClicked(QListWidgetItem *item)
 {
+    ui->listWidgetTimes->clear();
+
     QString clickedSubjectName = item->text();
     Subject wantedSubject;
     foreach(Subject suspectSubject, subjects){ //create a separate method
@@ -62,6 +64,10 @@ void MainWindow::on_pushButtonAddTime_clicked()
     if(ui->listWidgetSubjects->currentRow()==-1){
         ui->statusBar->showMessage("First select a subject!",500);
     }
+    else{
+        DialogAddDate* dialog = new DialogAddDate(this);
+        dialog->show();
+    }
 
 
 
@@ -69,3 +75,15 @@ void MainWindow::on_pushButtonAddTime_clicked()
 
 
 
+
+void MainWindow::on_pushButtonAddSubject_clicked()
+{
+    QString subjectName = QInputDialog::getText(this,"What's the name?","Enter the name");
+
+    //add subject method?
+    if(subjectName!=""){
+        Subject subject(subjectName);
+        subjects.append(subject);
+        ui->listWidgetSubjects->addItem(subject.getName());
+    }
+}

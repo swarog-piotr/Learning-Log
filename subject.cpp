@@ -12,14 +12,17 @@ void Subject::setName(const QString &value)
 
 QList<QString> Subject::getStringDates()
 {
-  dates[0].toString();
+  QList<QString> datesList;
 
-  QList<QString> dateList;
-  foreach(QDateTime date, dates){
-      dateList.append(date.toString());
+  if(dates.empty()){
+      datesList.append("");
   }
-
-  return dateList;
+  else{
+      foreach(QDateTime date, dates){
+         datesList.append(date.toString());
+      }
+  }
+  return datesList;
 }
 
 //QVector<QDateTime>& Subject::getDates()

@@ -25,15 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        dialogadddate.cpp \
         main.cpp \
         mainwindow.cpp \
         subject.cpp
 
 HEADERS += \
+        dialogadddate.h \
         mainwindow.h \
         subject.h
 
 FORMS += \
+        dialogadddate.ui \
         mainwindow.ui
 
 # Default rules for deployment.

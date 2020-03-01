@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include "subject.h"
+#include "dialogadddate.h"
 #include <QListWidgetItem>
 #include <QDebug>
+#include <QInputDialog>
 namespace Ui {
 class MainWindow;
 }
@@ -21,6 +23,8 @@ private slots:
     void on_listWidgetSubjects_itemClicked(QListWidgetItem *item);
 
     void on_pushButtonAddTime_clicked();
+
+    void on_pushButtonAddSubject_clicked();
 
 private:
     Ui::MainWindow *ui;
