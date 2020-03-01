@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "subject.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QVector<Subject> subjects;
+
+
+    void initSampleSubjects();
+
 };
 
 #endif // MAINWINDOW_H
