@@ -6,10 +6,9 @@ DialogAddDate::DialogAddDate(QWidget *parent) :
     ui(new Ui::DialogAddDate)
 {
     ui->setupUi(this);
-    ui->dateTimeEditSince->setDateTime(QDateTime::currentDateTime());
-    ui->dateTimeEditTo->setDateTime(QDateTime::currentDateTime());
-
-
+    ui->timeEditSince->setTime(QTime::currentTime());
+    ui->timeEditTo->setTime(QTime::currentTime());
+    ui->dateEdit->setDate(QDate::currentDate());
 
 }
 

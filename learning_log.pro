@@ -26,12 +26,14 @@ CONFIG += c++11
 
 SOURCES += \
         dialogadddate.cpp \
+        interval.cpp \
         main.cpp \
         mainwindow.cpp \
         subject.cpp
 
 HEADERS += \
         dialogadddate.h \
+        interval.h \
         mainwindow.h \
         subject.h
 

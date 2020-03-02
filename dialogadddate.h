@@ -2,7 +2,7 @@
 #define DIALOGADDDATE_H
 
 #include <QDialog>
-
+#include <QDateTime>
 namespace Ui {
 class DialogAddDate;
 }
@@ -17,6 +17,10 @@ public:
 
 private:
     Ui::DialogAddDate *ui;
+
+    QDate date;
+    QTime timeSince;
+    QTime timeTo;
 };
 
 #endif // DIALOGADDDATE_H

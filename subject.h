@@ -4,15 +4,15 @@
 #include <QString>
 #include <QVector>
 #include <QDateTime>
+#include "interval.h"
+
 
 class Subject
 {
 private:
     QString name;
     QString notes;
-    QVector<QDateTime> dates;
-
-
+    QVector<Interval> intervals;
 
 public:
     Subject();
@@ -20,8 +20,8 @@ public:
     QString getName() const;
     void setName(const QString &value);
     //QVector<QDateTime>& getDates();
-    QList<QString> getStringDates();
-    void appendDate(const QDateTime &date);
+    QList<QString> getStringIntervals();
+    void appendInterval(const QDate& date=QDate::currentDate(), const QTime& timeSince=QTime::currentTime(), const QTime& timeTo=QTime::currentTime());
 };
 
 #endif // SUBJECT_H

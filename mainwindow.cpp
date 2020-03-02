@@ -17,20 +17,21 @@ MainWindow::~MainWindow()
 void MainWindow::initSampleSubjects()
 {
     Subject astronomy("Astronomy");
-    astronomy.appendDate(QDateTime::currentDateTime());
-
+    astronomy.appendInterval();
     subjects.append(astronomy);
 
     ui->listWidgetSubjects->addItem(subjects[0].getName());
 
     Subject electronics("Electronics");
-    astronomy.appendDate(QDateTime::currentDateTime());
+    astronomy.appendInterval();
 
     subjects.append(electronics);
 
     ui->listWidgetSubjects->addItem(subjects[1].getName());
 
 }
+
+
 
 void MainWindow::on_listWidgetSubjects_itemClicked(QListWidgetItem *item)
 {
@@ -44,7 +45,7 @@ void MainWindow::on_listWidgetSubjects_itemClicked(QListWidgetItem *item)
         }
     }
 
-    ui->listWidgetTimes->addItems(wantedSubject.getStringDates());
+    ui->listWidgetTimes->addItems(wantedSubject.getStringIntervals());
 
 
 }

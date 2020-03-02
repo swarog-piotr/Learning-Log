@@ -1,5 +1,7 @@
 #include "subject.h"
 
+
+
 QString Subject::getName() const
 {
     return name;
@@ -10,29 +12,28 @@ void Subject::setName(const QString &value)
     name = value;
 }
 
-QList<QString> Subject::getStringDates()
+QList<QString> Subject::getStringIntervals()
 {
   QList<QString> datesList;
 
-  if(dates.empty()){
+  if(intervals.empty()){
       datesList.append("");
   }
   else{
-      foreach(QDateTime date, dates){
-         datesList.append(date.toString());
+      foreach(Interval interval, intervals){
+         datesList.append(interval.toQString());
       }
   }
   return datesList;
 }
 
-//QVector<QDateTime>& Subject::getDates()
-//{
-//    return dates;
-//}
 
-void Subject::appendDate(const QDateTime &date)
+
+void Subject::appendInterval(const QDate& date, const QTime& timeSince, const QTime& timeTo)
 {
-    dates.append(date);
+    Interval interval;
+    interval.setInterval(date,timeSince,timeTo);
+    intervals.append(interval);
 }
 
 
