@@ -6,15 +6,14 @@
 
 class Interval
 {
-public:
-    Interval();
-    QString toQString();
-    void setInterval(QDate date, QTime timeSince, QTime timeTo); //TODO: proper signature
 private:
-
     QDate date;
     QTime timeSince;
     QTime timeTo;
+public:
+    Interval();
+    void setInterval(const QDate& date,const  QTime& timeSince,const QTime& timeTo);
+    QString toQString();
 };
 
 #endif // INTERVAL_H

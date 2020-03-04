@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     initSampleSubjects();
+    connect(ui->listWidgetSubjects,&QListWidget::itemClicked,this,&MainWindow::searchForActiveSubject);
 }
 
 MainWindow::~MainWindow()
@@ -14,49 +15,51 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//custom slots
+void MainWindow::searchForActiveSubject(QListWidgetItem *item)
+{
+    QString clickedSubjectName = item->text();
+
+    for(int i=0;i<subjects.size();i++){
+        if(subjects[i].getName()==clickedSubjectName){
+            activeSubject=&(subjects[i]);
+            break;
+        }
+    }
+
+
+    qDebug()<< activeSubject->getName();
+    qDebug() << activeSubject->getStringIntervals();
+
+    updateListWidgetItems();
+}
+
+
+
+
 void MainWindow::initSampleSubjects()
 {
     Subject astronomy("Astronomy");
+    astronomy.appendInterval();
     astronomy.appendInterval();
     subjects.append(astronomy);
 
     ui->listWidgetSubjects->addItem(subjects[0].getName());
 
     Subject electronics("Electronics");
-    astronomy.appendInterval();
 
+    electronics.appendInterval();
     subjects.append(electronics);
 
     ui->listWidgetSubjects->addItem(subjects[1].getName());
 
 }
 
-
-
-void MainWindow::on_listWidgetSubjects_itemClicked(QListWidgetItem *item)
+void MainWindow::updateListWidgetItems()
 {
     ui->listWidgetTimes->clear();
-
-    QString clickedSubjectName = item->text();
-    Subject wantedSubject;
-    foreach(Subject suspectSubject, subjects){ //create a separate method
-        if(suspectSubject.getName()==clickedSubjectName){
-            wantedSubject=suspectSubject;
-        }
-    }
-
-    ui->listWidgetTimes->addItems(wantedSubject.getStringIntervals());
-
-
+    ui->listWidgetTimes->addItems(activeSubject->getStringIntervals());
 }
-
-
-
-
-
-
-
-
 
 
 void MainWindow::on_pushButtonAddTime_clicked()
@@ -64,18 +67,14 @@ void MainWindow::on_pushButtonAddTime_clicked()
 
     if(ui->listWidgetSubjects->currentRow()==-1){
         ui->statusBar->showMessage("First select a subject!",500);
+        qDebug() << activeSubject->getStringIntervals();
     }
     else{
-        DialogAddDate* dialog = new DialogAddDate(this);
-        dialog->show();
+        DialogAddDate* dialog = new DialogAddDate(activeSubject, this);
+        dialog->exec();
+        updateListWidgetItems();
     }
-
-
-
 }
-
-
-
 
 void MainWindow::on_pushButtonAddSubject_clicked()
 {
@@ -87,4 +86,10 @@ void MainWindow::on_pushButtonAddSubject_clicked()
         subjects.append(subject);
         ui->listWidgetSubjects->addItem(subject.getName());
     }
+}
+
+
+void MainWindow::on_pushButtonTEST_clicked()
+{
+   qDebug() <<  activeSubject->getStringIntervals();
 }

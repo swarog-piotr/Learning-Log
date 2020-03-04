@@ -1,6 +1,14 @@
 #include "subject.h"
+#include <QDebug>
+Subject::Subject()
+{
 
+}
 
+Subject::Subject(QString name)
+{
+ this->name=name;
+}
 
 QString Subject::getName() const
 {
@@ -15,6 +23,9 @@ void Subject::setName(const QString &value)
 QList<QString> Subject::getStringIntervals()
 {
   QList<QString> datesList;
+  datesList.clear();
+
+  qDebug()<<"inside object " << name;
 
   if(intervals.empty()){
       datesList.append("");
@@ -38,12 +49,4 @@ void Subject::appendInterval(const QDate& date, const QTime& timeSince, const QT
 
 
 
-Subject::Subject()
-{
 
-}
-
-Subject::Subject(QString name)
-{
- this->name=name;
-}

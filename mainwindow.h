@@ -20,20 +20,24 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_listWidgetSubjects_itemClicked(QListWidgetItem *item);
+
 
     void on_pushButtonAddTime_clicked();
 
     void on_pushButtonAddSubject_clicked();
 
+    void searchForActiveSubject(QListWidgetItem* item);
+
+    void on_pushButtonTEST_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     QVector<Subject> subjects;
-
+    Subject *activeSubject;
 
     void initSampleSubjects();
-
+    void updateListWidgetItems();
 };
 
 #endif // MAINWINDOW_H

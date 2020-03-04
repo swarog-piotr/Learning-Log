@@ -6,17 +6,15 @@ Interval::Interval()
 }
 
 QString Interval::toQString(){
-    QString fullstring;
-
-    fullstring.append("dzien tygodnia ");
-    fullstring.append(date.toString());
-    fullstring.append(timeSince.toString());
-    fullstring.append(timeTo.toString());
-
-    return fullstring;
+    QString formattedDate;
+    formattedDate = date.toString("dddd dd.MM ");
+    formattedDate.append(timeSince.toString() + " - " + timeTo.toString());
+//    fullstring.append(timeSince.toString());
+//    fullstring.append(timeTo.toString());
+    return formattedDate;
 }
 
-void Interval::setInterval(QDate date, QTime timeSince, QTime timeTo)
+void Interval::setInterval(const QDate &date, const QTime &timeSince, const QTime &timeTo)
 {
     this->date = date;
     this->timeSince = timeSince;

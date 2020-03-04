@@ -19,7 +19,7 @@ public:
     Subject(QString name);
     QString getName() const;
     void setName(const QString &value);
-    //QVector<QDateTime>& getDates();
+
     QList<QString> getStringIntervals();
     void appendInterval(const QDate& date=QDate::currentDate(), const QTime& timeSince=QTime::currentTime(), const QTime& timeTo=QTime::currentTime());
 };
