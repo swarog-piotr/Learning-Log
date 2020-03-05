@@ -22,6 +22,11 @@ public:
 
     QList<QString> getStringIntervals();
     void appendInterval(const QDate& date=QDate::currentDate(), const QTime& timeSince=QTime::currentTime(), const QTime& timeTo=QTime::currentTime());
+
+    void read(const QJsonObject &json);
+    void write(QJsonObject &json) const;
+
+
 };
 
 #endif // SUBJECT_H

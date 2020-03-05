@@ -47,6 +47,42 @@ void Subject::appendInterval(const QDate& date, const QTime& timeSince, const QT
     intervals.append(interval);
 }
 
+void Subject::write(QJsonObject &json) const
+{
+    json["name"] = name;
+    json["notes"] = notes;
+
+    QJsonArray intervalsArray;
+
+    for(const Interval& interval: intervals){
+        QJsonObject intervalObject;
+        interval.write(intervalObject);
+        intervalsArray.append(intervalObject);
+    }
+    json["intervals"] = intervalsArray;
+}
+
+void Subject::read(const QJsonObject &json)
+{
+    if (json.contains("name") && json["name"].isString())
+            name = json["name"].toString();
+
+    if (json.contains("notes") && json["notes"].isDouble())
+            notes = json["notes"].toString();
+
+
+    if(json.contains("intervals") & json["intervals"].isArray()) {
+        QJsonArray intervalsArray = json["intervals"].toArray();
+        intervals.clear();
+        intervals.reserve(intervalsArray.size());
+        for(int i=0;i<intervalsArray.size();i++){
+            QJsonObject intervalObject = intervalsArray[i].toObject();
+            Interval interval;
+            interval.read(intervalObject);
+            intervals.append(interval);
+        }
+    }
+}
 
 
 

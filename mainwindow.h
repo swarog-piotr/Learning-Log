@@ -7,6 +7,8 @@
 #include <QListWidgetItem>
 #include <QDebug>
 #include <QInputDialog>
+#include <QFile>
+#include <QJsonDocument>
 namespace Ui {
 class MainWindow;
 }
@@ -19,6 +21,13 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void read(const QJsonObject &json);
+    void write(QJsonObject &json) const;
+
+    bool loadSubjects();
+    bool saveSubjects();
+
+
 private slots:
 
 
@@ -29,6 +38,10 @@ private slots:
     void searchForActiveSubject(QListWidgetItem* item);
 
     void on_pushButtonTEST_clicked();
+
+    void on_pushButtonSAVE_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

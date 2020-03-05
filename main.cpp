@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
     a.setObjectName("Learning log");
     a.setApplicationName("Learning log");
     MainWindow w;
+    w.loadSubjects();
 
     w.show();
 
